@@ -1,0 +1,59 @@
+* {    
+    font-family: Verdana, sans-serif;
+}
+
+.slide-box {
+    box-sizing: content-box;
+    display: flex;
+    flex-wrap: nowrap;
+    padding-right: 15px;
+}
+.course-box {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    width: 270px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 10px 5px #BBB;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.course-box:not(:first-child) {
+    margin-left: 40px;
+}
+
+.course-box img {
+    width: 250px;
+}
+
+.course-box .course-info {
+    font-size: 1.3rem;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.course-box .course-info h4 {
+    font-weight: 600;
+}
+
+.course-box .course-info p {
+    font-size: 1.1rem;
+}
+
+.course-box .course-price {
+    align-self: flex-end;
+    justify-self: flex-end;
+    margin-top: auto;
+}
+
+.course-box .course-price .price-of {
+    color: #b73831;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+.course-box .course-price .price-for {
+    font-size: 1.5rem;
+    color: #287a22;
+    font-weight: bolder;
+}
