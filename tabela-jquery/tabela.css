@@ -1,0 +1,17 @@
+#table {
+    border-collapse: collapse;
+}
+
+#table thead {
+    color: #356ecc;
+    border: thin solid #356ecc;
+}
+
+#table tbody {
+    border: thin solid #356ecc;
+    border-top: none;
+}
+
+#table td {
+    padding: 5px 10px;
+}
