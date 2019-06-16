@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.esquerda, .direita {
+    width: 300px;
+    margin-right: 20px;
+    border: 2px solid #AAA;
+    border-radius: 5px;
+    height: 60vh;
+}
+
+.item {
+    width: calc(100% - 100px);
+    margin: 20px auto 0 auto;
+    padding: 20px;
+    border: 2px solid #AAA;
+    border-radius: 5px;
+    color: #AAA;
+}

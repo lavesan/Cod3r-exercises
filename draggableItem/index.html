@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Draggable item</title>
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+        <div class="esquerda" wm-dropzone>
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+        </div>
+        <div class="direita" wm-dropzone></div>
+        <script>
+            const items = document.querySelectorAll('[wm-dropzone] .item');
+            items.forEach((item, index) => {
+                item.draggable = true;
+                item.id = item.id || `draggable-item-${index}`;
+                item.ondragstart = e =>
+                    e.dataTransfer.setData('item-id', e.target.id);
+            })
+
+            const dropzones = document.querySelectorAll('[wm-dropzone]');
+            dropzones.forEach(dropzone => {
+                dropzone.ondragover = e => e.preventDefault();
+                dropzone.ondrop = function(e) {
+                    const id = e.dataTransfer.getData('item-id');
+                    const item = document.getElementById(id);
+                    // To let the element inside any element it's dropped
+                    // e.target.appenderChild(item);
+                    // To let the element inside some specifc element
+                    dropzone.appendChild(item);
+                }
+            })
+        </script>
+    </body>
+</html>
