@@ -1,0 +1,33 @@
+{
+  "name": "cod3r",
+  "version": "1.0.0",
+  "author": "Valdery Alves Paes Júnior (valdery.jur@gmail.com)",
+  "description": "Some exercises from Udemy webdevelopment full Course",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.1",
+    "express": "^4.17.1",
+    "file-loader": "^3.0.1",
+    "mini-css-extract-plugin": "^0.7.0",
+    "multer": "^1.4.1",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "sass-loader": "^7.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lavesan/Cod3r-exercises.git"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lavesan/Cod3r-exercises/issues"
+  },
+  "homepage": "https://github.com/lavesan/Cod3r-exercises#readme"
+}

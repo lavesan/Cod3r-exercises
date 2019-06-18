@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax</title>
+</head>
+<body>
+    <input type="file" name="archive" />
+    <div class="progress"></div>
+
+    <script>
+        function ajaxUpload(config) {
+            const xhr = new XMLHttpRequest();
+
+            if(xhr.upload) {
+                xhr.upload.onprogress = e => {
+                    const atual = e.loaded;
+                    const total = e.total;
+                    const percentual = Math.floor(atual / total * 100);
+                    // Isso dá um feedback de como está indo o upload
+                    config.progress({ atual, total, percentual });
+                }
+            }
+
+            xhr.open('post', config.url, true);
+            xhr.send(config.formData);
+        }
+
+        document.querySelector('input[type=file]').onchange = e => {
+            const formData = new FormData();
+            formData.append(e.target.name, e.target.files[0]);
+
+            ajaxUpload({
+                url: 'upload',
+                formData,
+                progress(data) {
+                    const progress = document.querySelector('.progress')
+                    progress.innerHTML = JSON.stringify(data);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
