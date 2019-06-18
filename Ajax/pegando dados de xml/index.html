@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Consumindo XML</title>
+</head>
+<body>
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(config.method, config.url, true);
+
+            // Quando o XMLHttpRequest está pronto, ela dispara
+            // https://www.w3schools.com/js/js_ajax_http.asp
+            xhr.onreadystatechange = e => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // responseXML é usado para arquivos XML
+                        config.success(xhr.responseXML);
+                    } else if (xhr.status >= 400) {
+                        config.error({
+                            code: xhr.status,
+                            text: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send();
+        }
+
+        ajax({
+            url: './data/estados.xml',
+            method: 'get',
+            success(response) {
+                const estados = response.getElementByTagName('estado');
+                const itens = Array.from(estados).reduce(
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, ''
+                );
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`);
+            }
+        })
+    </script>
+</body>
+</html>
