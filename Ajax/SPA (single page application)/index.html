@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Single page application</title>
+</head>
+<body>
+    <!-- 1 página podendo ir para outras, mas só 1 página. -->
+    <h2>Página 1</h2>
+    <div class="pagina"></div>
+    <script>
+        function navegarViaAjax(url, seletor, push = true) {
+            if (!url || !seletor) return;
+            const elemento = document.querySelector(seletor);
+            fetch(url)
+                .then(res => res.text())
+                .then(html => {
+                    elemento.innerHTML = html;
+
+                    // Adiciona a página escolhida no histórico de páginas
+                    if(push) {
+                        history.pushState({ seletor }, null, url);
+                    }
+                })
+        }
+  
+        // Altera a url que aparece pro usuário, de acordo com a última página no histórico
+        window.onpopstate = e => {
+            if(e.state) {
+                navegarViaAjax(window.location.href, e.state.seletor, false);
+            }
+        }
+    </script>
+</body>
+</html>

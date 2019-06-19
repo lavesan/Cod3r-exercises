@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enviando no submit</title>
+</head>
+<body>
+    <!-- No submit vai enviar um GET para rota rota/chamada -->
+    <form name="exemploForm" action="rota/chamada" method="GET">
+        <input type="text" name="umInput" />
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.exemploForm.onsubmit = async e => {
+            e.preventDefault();
+
+            const { target } = e;
+            const data = new FormData(target);
+
+            const options = {
+                method: target.method,
+                body: new URLSearchParams(data)
+            }
+
+            fetch(target.action, options)
+                .then(res => res.json())
+                .then(jsonRes => console.log(jsonRes))
+                .catch(err => console.log('deu pau!', err));
+            // OU
+            try {
+                const res = await fetch(target.action, options);
+                const jsonRes = await res.json();
+                console.log(jsonRes);
+
+            } catch(e) {
+                console.log('deu pau!', err);
+            }
+        }
+    </script>
+</body>
+</html>

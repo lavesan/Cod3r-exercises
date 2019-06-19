@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dados em JSON com fetch</title>
+</head>
+<body>
+    <h1>Estados</h1>
+    <script>
+        const url = 'estados.json';
+        fetch(url)
+            // Convertendo a resposta em JSON 
+            .then(res => res.json())
+            .then(jsonRes => console.log(jsonRes));
+    </script>
+</body>
+</html>
