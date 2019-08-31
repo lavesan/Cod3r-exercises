@@ -9,8 +9,17 @@
 <body>
     <h1>Estados</h1>
     <script>
-        const url = 'estados.json';
-        fetch(url)
+        const url = 'http://localhost:3000/tools';
+        const options = {
+            method: 'POST',
+            body: {
+                title: "abc",
+                link: "https://www.google.com",
+                description: "Ferramenta de pesquisa",
+                tags: ["tag1","tag2"]}
+            }
+
+        fetch(url, options)
             // Convertendo a resposta em JSON 
             .then(res => res.json())
             .then(jsonRes => console.log(jsonRes));
