@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+
+    <div id="root">
+        <!-- Adicionar evento de clique no botão -->
+        <button v-on:click="clicou">Clique</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#root',
+            methods: {
+                clicou(elem) {
+                    console.log('elem: ', elem)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

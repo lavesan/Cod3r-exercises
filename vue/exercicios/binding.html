@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="root">
+        <h2>{{ link }}</h2>
+        <a v-bind:href="link">Link 1</a><br />
+        <a :href="link">Link 1</a>
+        <fieldset>
+            <label>{{ nome }}</label><br />
+            <!-- Two way data binding -->
+            <input type="text" v-model="nome" /><br />
+            <!-- One way data binding -->
+            <input type="text" :value="nome" />
+        </fieldset>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                link: 'https://youtube.com/cod3rcursos',
+                nome: 'valor'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="./js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+
+    <div id="root">
+        <p>Variável 1: {{ var1 }}</p>
+        <p>Variável 2: {{ var2 }}</p>
+        <p>Função: {{ funcao1() }}</p>
+        <p>Funlçao computada: {{ funcaoComoVariavel }}</p>
+    </div>
+    <script>
+        new Vue({
+            // Elemento desta instância do vue.js
+            el: '#root',
+            // Variáveis
+            data: {
+                var1: 'carregada',
+                var2: 'b'
+            },
+            // métodos
+            methods: {
+                funcao1() {
+                    return 'criei uma função'
+                }
+            },
+            // métodos que não passo parâmetros e chamo como variáveis
+            computed: {
+                funcaoComoVariavel() {
+                    return `variavel ${this.var1}`
+                }
+            },
+            // Métodos chamados sempre que a variavel que tem seu nome é alterada
+            watch: {
+                var1(valor) {
+                    console.log('var1: ', valor)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

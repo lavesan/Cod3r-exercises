@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="../../exercicios-web/jquery/js/jquery.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        {{ 1 + 2 }}
+        {{ (function() { return 'printou' })() }}
+    </div>
+
+    <script>
+        (function($) {
+            $.fn.interpretar = function() {
+                const retirarChaves = s => s.substring(2, s.length - 2)
+                const conteudo = $(this).html()
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g)
+                const expressoes = expressoesComChaves.map(retirarChaves)
+                const resultados = expressoes.map(e => eval(e))
+
+                let conteudoFinal = conteudo
+                expressoesComChaves.forEach((expressao, i) => {
+                    conteudoFinal = conteudoFinal.replace(
+                        expressoesComChaves[i], resultados[i]
+                    )
+                })
+                $(this).html(conteudoFinal)
+                return this
+            }
+        })(jQuery);
+
+        $('div').interpretar()
+    </script>
+</body>
+</html>
