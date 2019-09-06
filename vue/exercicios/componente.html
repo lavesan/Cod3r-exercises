@@ -3,13 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Componente</title>
-    <link rel="stylesheet" href="/css/estilo.css">
-    <script src="/js/vue.min.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/vue.min.js"></script>
 </head>
 <body class="exercicio">
 
+    <div id="app">
+        <nome-do-seletor atributo1="1" atributo2="2"></nome-do-seletor>
+        <nome-do-seletor atributo1="atributo" atributo2="doidao"></nome-do-seletor>
+    </div>
+
     <script>
-        // ...
+        // Componente no Vue
+        Vue.component('nome-do-seletor', {
+            // Esse objeto recebe a mesma coisa de uma instância do Vue (data, methods...)
+            // Input em um componente Vue
+            props: ['atributo1', 'atributo2'],
+            // Tenho de passar uma função, senão gera um erro de parâmetros inicializados duplicados
+            data: function() {
+                return {
+                    dado1: 'dado 1',
+                    dado2: 'dado 2',
+                }
+            },
+            // Utilizo o this para pegar o dado do componente correto
+            methods: {
+                funcao1() {
+                    return `${this.dado1}/Alguma merda`
+                }
+            },
+            template: `
+                <fragment>
+                    <p>{{ atributo1 }}</p>
+                    <p>{{ atributo2 }}</p>
+                </fragment>
+            `
+        })
+
+        new Vue({
+            el: '#app'
+        })
     </script>
 </body>
 </html>

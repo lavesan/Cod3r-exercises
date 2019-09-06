@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Aplicando Estilo</title>
-    <link rel="stylesheet" href="/css/estilo.css">
-    <script src="/js/vue.min.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/vue.min.js"></script>
     <style>
         .vermelho {
             background-color: red;
@@ -13,8 +13,22 @@
 </head>
 <body class="exercicio">
 
+    <!-- Classe customizada -->
+    <div 
+        id="root"
+        @click="aplicarCor = !aplicarCor"
+        :class="{ vermelho: aplicarCor }"
+    >
+        Div total
+    </div>
+
     <script>
-        // ...
+        new Vue({
+            el: '#root',
+            data: {
+                aplicarCor: false
+            }
+        })
     </script>
 </body>
 </html>

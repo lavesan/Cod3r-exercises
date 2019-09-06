@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Diretiva Personalizada</title>
-    <link rel="stylesheet" href="/css/estilo.css">
-    <script src="/js/vue.min.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/vue.min.js"></script>
 </head>
 <body class="exercicio">
 
+    <div id="app">
+        <input type="text" v-model="valor" />
+        <p v-nova-diretiva="valor"></p>
+    </div>
+    
     <script>
-        // ...
+        Vue.directive('nova-diretiva', {
+            componentUpdated(el, binding) {
+                const invertido = binding.value.split('').reverse().join('')
+                el.innerHTML = invertido
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                valor: ''
+            }
+        })
     </script>
 </body>
 </html>

@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>If & For</title>
-    <link rel="stylesheet" href="/css/estilo.css">
-    <script src="/js/vue.min.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <script src="./js/vue.min.js"></script>
 </head>
 <body class="exercicio">
 
+    <div id="root">
+        <!-- v-if remove o elemento da DOM -->
+        <p v-if="false">if</p>
+        <p v-else-if="true">else if</p>
+        <p v-else>else</p>
+        <!-- v-show utiliza o display: none do css -->
+        <input type="text" v-show="false" />
+
+        <!-- Iteração -->
+        <div>
+            <small v-for="(elem, index) in paragrafos">{{ elem }}</small>
+        </div>
+    </div>
+
     <script>
-        // ...
+        new Vue({
+            el: '#root',
+            data: {
+                paragrafos: [
+                    '1',
+                    '2',
+                    '3',
+                    '4',
+                    '5',
+                    '6',
+                ]
+            },
+        })
     </script>
 </body>
 </html>

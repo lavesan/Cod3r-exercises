@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Conceitos Básicos</title>
-    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="./css/estilo.css">
     <script src="./js/vue.min.js"></script>
 </head>
 <body class="exercicio">
@@ -13,6 +13,9 @@
         <p>Variável 2: {{ var2 }}</p>
         <p>Função: {{ funcao1() }}</p>
         <p>Funlçao computada: {{ funcaoComoVariavel }}</p>
+        <fragment>
+            <p>O fragment não reinderiza</p>
+        </fragment>
     </div>
     <script>
         new Vue({
@@ -21,7 +24,7 @@
             // Variáveis
             data: {
                 var1: 'carregada',
-                var2: 'b'
+                var2: 'segunda linha'
             },
             // métodos
             methods: {
@@ -40,7 +43,14 @@
                 var1(valor) {
                     console.log('var1: ', valor)
                 }
-            }
+            },
+            // Recebe uma string que reinderiza em HTML na div do projeto (remove todo HTML que dentro do projeto)
+            template: `
+                <div>
+                    <h1>{{ var1 }}</h1>
+                    <p>{{ var2 }}</p>
+                </div>
+            `
         })
     </script>
 </body>

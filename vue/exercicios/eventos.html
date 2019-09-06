@@ -10,7 +10,13 @@
 
     <div id="root">
         <!-- Adicionar evento de clique no botão -->
-        <button v-on:click="clicou">Clique</button>
+        <button v-on:click="clicou">Clique 1</button>
+        <button @click="clicou">Clique 2</button>
+
+        <p @mousemove="moveu">Evento mouse move</p>
+
+        <input type="text" @keyup="keyup" />
+        <input type="text" @keyup.enter="keyupOnEnterKey" />
     </div>
 
     <script>
@@ -19,7 +25,16 @@
             methods: {
                 clicou(elem) {
                     console.log('elem: ', elem)
-                }
+                },
+                moveu(elem) {
+                    console.log('moveu, cara: ', elem)
+                },
+                keyup(elem) {
+                    console.log('keyup: ', elem)
+                },
+                keyupOnEnterKey(elem) {
+                    console.log('keyup on enter: ', elem)
+                },
             }
         })
     </script>
