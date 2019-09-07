@@ -9,9 +9,45 @@
 </head>
 
 <body>
-
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="sale in sales">
+                    <th>{{ sale.id }}</th>
+                    <th>{{ sale.name }}</th>
+                    <th>{{ sale.price }}</th>
+                    <th>{{ sale.qtde }}</th>
+                    <th>{{ sale.date }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                sales: []
+            },
+            methods: {
+                getSales() {
+                    fetch('/data/sales.json')
+                        .then(res => res.json())
+                        .then(resJson => this.sales = resJson);
+                }
+            },
+            mounted() {
+                this.getSales();
+            }
+        })
     </script>
 </body>
 
